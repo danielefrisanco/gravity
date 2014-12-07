@@ -23,7 +23,7 @@ long long int problem343(long long int k/*,long   double*** mat*/) {
 		
 		xi=static_cast<long long int>(x);
 		yi=static_cast<long long int>(y);
-		if(( mat[xi][yi][0]==0.0)&&( mat[xi][yi][1]==0.0)){
+		/*if(( mat[xi][yi][0]==0.0)&&( mat[xi][yi][1]==0.0)){*/
 		if ((x!=1)&&((y / x) - round((y / x)) == 0.0)) {
 			y = y / x;
 			x = 1;
@@ -31,14 +31,14 @@ long long int problem343(long long int k/*,long   double*** mat*/) {
 			x++;
 			y--;
 		}
-		mat[xi][yi][0]=x;
+	/*	mat[xi][yi][0]=x;
 		mat[xi][yi][1]=y;
 		}
 		else{
 		
-		x=mat[xi][yi][0];
+	x=mat[xi][yi][0];
 		y=mat[xi][yi][1];
-		}
+		}*/
 		
    //std::cout << "t"<<t<< "x"<<x<< "y"<<y<< "n"<<n << std::endl;
 		//alert("t"+t+"n"+n+"x"+x+"y"+y);
@@ -51,9 +51,12 @@ int main()
 {
 
 long long int somma=0;
+long long int partial=0;
+long long int somma1=0;
+long long int partial1=0;
  long long  int  max= (pow(10.0,6.0))*2;
- max=1000;
- 
+ max=130;
+ /*
 for (long long  i = 0; i <= max; i++)
 for (long long  j = 0; j <= max; j++){
   
@@ -61,7 +64,7 @@ for (long long  j = 0; j <= max; j++){
   mat[i][j][1]=0.0;
   
  // std::cout << "i"<<i<< "j"<<j<< std::endl;
-}
+}*/
 
 
 
@@ -78,12 +81,19 @@ for (long long  j = 0; j < max; j++){
   
 }
 */
- 
 for (long k=1;k<=max;k++){
-somma=somma+problem343(pow(k,3));
+partial1=problem343(pow(k,3));
+partial=problem343(k);
+somma1=somma1+partial1;
+somma=somma+partial;
+
+  //std::cout << "partial"<<partial<<"\t\tk"<<k <<"\t\tsomma"<<somma <<"\t\t pow(k,3)"<< pow(k,3)<<"\t\t A "<< partial/3<<std::endl;
+  std::cout << "partial"<<partial<< "-"<<partial1<<"\tk"<<k <<"\tpow(k,3)"<< pow(k,3)<<"\t somma"<<somma <<"-"<<somma1  <<std::endl;
+  //std::cout  <<"\t\t somma/pow(k,3)"<< somma/pow(k,3)<<std::endl;
+   
 
 }  
-
+ 
   std::cout << "somma"<<somma << std::endl;
   return 0;
 }
